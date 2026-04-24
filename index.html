@@ -17,63 +17,56 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--primary); }
 
-  /* HEADER CLAIR */
+  /* LOGO PRETTY & LISIBLE */
   header { background: var(--white); padding: 25px; border-bottom: 1px solid #E2E8F0; text-align: center; }
   .logo-img { width: 220px; height: auto; }
 
   /* SECTION EXPERT */
-  .expert-section { background: var(--primary); padding: 50px 20px; text-align: center; color: white; }
-  .profile-container {
-    width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--accent);
-    margin: 0 auto 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  .hero-expert { background: var(--primary); padding: 40px 20px; text-align: center; color: white; }
+  .profile-box {
+    width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent);
+    margin: 0 auto 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
-  .profile-container img { width: 100%; height: 100%; object-fit: cover; }
-  .expert-section h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 10px; }
-  .expert-section h1 span { color: var(--accent); }
+  .profile-box img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-expert h1 { font-family: 'Playfair Display', serif; font-size: 30px; margin-bottom: 5px; }
+  .hero-expert h1 span { color: var(--accent); }
 
-  /* CALCULATEUR */
-  .wrapper { max-width: 800px; margin: 30px auto 60px; padding: 0 20px; }
-  .card { background: var(--white); border-radius: 25px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+  /* DASHBOARD DE GAIN */
+  .container { max-width: 850px; margin: -30px auto 60px; padding: 0 20px; }
+  .main-card { background: var(--white); border-radius: 30px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
 
-  /* SELECTEUR EMPRUNTEUR */
-  .selector { display: flex; justify-content: center; gap: 15px; margin-bottom: 35px; }
-  .s-btn { 
-    flex: 1; padding: 15px; border: 2px solid #EDF2F7; border-radius: 12px; 
-    cursor: pointer; font-weight: 700; text-align: center; transition: 0.3s;
-  }
+  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+  .res-card { padding: 20px; border-radius: 18px; text-align: center; border: 1px solid #EDF2F7; }
+  .res-highlight { background: var(--primary); color: white; grid-column: span 2; border: 2px solid var(--accent); }
+  
+  .label { font-size: 11px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; display: block; margin-bottom: 5px; opacity: 0.8; }
+  .val-big { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; color: var(--accent); }
+  .val-md { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; }
+
+  /* SELECTEUR & SLIDERS */
+  .selector { display: flex; gap: 10px; margin-bottom: 30px; }
+  .s-btn { flex: 1; padding: 12px; border: 2px solid #EDF2F7; border-radius: 10px; cursor: pointer; font-weight: 700; text-align: center; font-size: 13px; transition: 0.3s; }
   .s-btn.active { border-color: var(--accent); background: var(--accent); color: var(--primary); }
 
-  /* GRILLE MENSUELLE */
-  .grid-results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
-  .res-box { padding: 30px; border-radius: 20px; text-align: center; }
-  .res-bank { background: #FFF5F5; border: 1px solid #FED7D7; }
-  .res-expert { background: #F0FFF4; border: 1px solid #C6F6D5; }
-  .res-label { font-size: 11px; text-transform: uppercase; font-weight: 800; color: #718096; margin-bottom: 10px; display: block; }
-  .res-price { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; }
+  .field { margin-bottom: 22px; }
+  .field-info { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+  .field-val { color: var(--accent); font-family: 'Playfair Display', serif; font-size: 20px; }
+  input[type=range] { width: 100%; height: 6px; border-radius: 10px; appearance: none; background: #E2E8F0; outline: none; }
+  input[type=range]::-webkit-slider-thumb { appearance: none; width: 24px; height: 24px; background: var(--primary); border: 3px solid var(--accent); border-radius: 50%; cursor: pointer; }
 
-  /* SLIDERS */
-  .field { margin-bottom: 30px; }
-  .field-label { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; font-size: 15px; }
-  .field-val { color: var(--accent); font-family: 'Playfair Display', serif; font-size: 22px; }
-  input[type=range] { width: 100%; height: 8px; border-radius: 10px; appearance: none; background: #E2E8F0; outline: none; }
-  input[type=range]::-webkit-slider-thumb { appearance: none; width: 28px; height: 28px; background: var(--primary); border: 4px solid var(--accent); border-radius: 50%; cursor: pointer; }
-
-  /* UPLOAD */
-  .upload { 
-    background: var(--primary); color: white; padding: 40px; border-radius: 20px; 
-    text-align: center; cursor: pointer; border: 2px dashed var(--accent); transition: 0.3s;
-  }
-  .upload:hover { background: #122a24; }
-
-  /* ECRAN FINAL */
-  #final { display: none; text-align: center; animation: fadeIn 0.5s ease; }
+  /* BOUTON ACTION */
+  .cta-upload { background: var(--primary); color: white; padding: 25px; border-radius: 20px; text-align: center; cursor: pointer; border: 2px dashed var(--accent); margin-top: 10px; }
+  
+  #screen-final { display: none; text-align: center; animation: fadeIn 0.4s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .banner { background: var(--accent); color: var(--primary); padding: 40px; border-radius: 25px; margin-bottom: 30px; }
-  .banner .total { font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 900; display: block; margin: 15px 0; }
+  .wa-btn { background: #25D366; color: white; text-decoration: none; padding: 20px; border-radius: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 18px; margin-top: 20px; }
 
-  .wa { background: #25D366; color: white; text-decoration: none; padding: 22px; border-radius: 18px; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 800; font-size: 19px; }
+  .footer { text-align: center; padding: 40px; font-size: 12px; opacity: 0.7; line-height: 1.6; }
 
-  .footer { text-align: center; padding: 60px 20px; font-size: 13px; opacity: 0.8; border-top: 1px solid #E2E8F0; background: var(--white); line-height: 1.8; }
+  @media (max-width: 600px) {
+    .results-grid { grid-template-columns: 1fr; }
+    .res-highlight { grid-column: span 1; }
+  }
 </style>
 </head>
 <body>
@@ -82,117 +75,122 @@
   <img src="NEW LOGO.png" alt="Agence by Pretto" class="logo-img">
 </header>
 
-<section class="expert-section">
-  <div class="profile-container">
+<section class="hero-expert">
+  <div class="profile-box">
     <img src="Photo pro DALLINGES.jpeg" alt="Jérémy Dallinges">
   </div>
   <h1>Expertise <span>Jérémy Dallinges</span></h1>
-  <p>Analyse Loi Lemoine : Calculez votre économie réelle.</p>
+  <p>Analyse Loi Lemoine • Toulouse & Occitanie</p>
 </section>
 
-<div class="wrapper">
-  <div class="card" id="main-ui">
+<div class="container">
+  <div class="main-card" id="ui-calc">
+    
+    <div class="results-grid">
+      <div class="res-card res-highlight">
+        <span class="label">Économie réelle sur 8 ans (Durée moyenne)</span>
+        <span class="val-big" id="res-8ans">3 750 €</span>
+      </div>
+      <div class="res-card">
+        <span class="label">Gain Mensuel</span>
+        <span class="val-md" style="color: var(--accent);" id="res-mensuel">52 €</span>
+      </div>
+      <div class="res-card">
+        <span class="label">Gain Total (Projet)</span>
+        <span class="val-md" id="res-total">9 375 €</span>
+      </div>
+    </div>
+
     <div class="selector">
-      <div class="s-btn active" id="btn-1" onclick="changeB(1)">1 Emprunteur</div>
-      <div class="s-btn" id="btn-2" onclick="changeB(2)">2 Emprunteurs</div>
-    </div>
-
-    <div class="grid-results">
-      <div class="res-box res-bank">
-        <span class="res-label">Banque (Mensuel)</span>
-        <span class="res-price" style="color: var(--danger);" id="price-bank">83 €</span>
-      </div>
-      <div class="res-box res-expert">
-        <span class="res-label">Jérémy (Mensuel)</span>
-        <span class="res-price" style="color: var(--accent);" id="price-expert">31 €</span>
-      </div>
+      <div class="s-btn active" id="b1" onclick="setB(1)">1 Emprunteur (100%)</div>
+      <div class="s-btn" id="b2" onclick="setB(2)">2 Emprunteurs (200%)</div>
     </div>
 
     <div class="field">
-      <div class="field-label">Capital restant dû <span class="field-val" id="val-cap">250 000 €</span></div>
-      <input type="range" id="range-cap" min="50000" max="1000000" step="10000" value="250000">
+      <div class="field-info">Capital restant dû <span class="field-val" id="l-cap">250 000 €</span></div>
+      <input type="range" id="i-cap" min="50000" max="1000000" step="10000" value="250000">
     </div>
 
     <div class="field">
-      <div class="field-label">Durée restante <span class="field-val" id="val-dur">15 ans</span></div>
-      <input type="range" id="range-dur" min="1" max="25" step="1" value="15">
+      <div class="field-info">Durée restante <span class="field-val" id="l-dur">15 ans</span></div>
+      <input type="range" id="i-dur" min="1" max="25" step="1" value="15">
     </div>
 
     <div class="field">
-      <div class="field-label">Taux d'assurance actuel <span class="field-val" id="val-taux">0.40%</span></div>
-      <input type="range" id="range-taux" min="0.05" max="1.00" step="0.05" value="0.40">
+      <div class="field-info">Taux assurance banque <span class="field-val" id="l-taux">0.40%</span></div>
+      <input type="range" id="i-taux" min="0.05" max="1.00" step="0.05" value="0.40">
     </div>
 
-    <div class="upload" onclick="document.getElementById('fin').click()">
-      <span style="font-size: 35px; display: block; margin-bottom: 10px;">📄</span>
-      <h3 style="margin-bottom: 5px;">Vérifier mon gain final</h3>
-      <p style="opacity: 0.8; font-size: 14px;">Déposez votre tableau d'amortissement (Etude gratuite)</p>
-      <input type="file" id="fin" style="display:none">
+    <div class="cta-upload" onclick="document.getElementById('f').click()">
+      <span style="font-size: 24px;">📊</span>
+      <h3 style="margin: 5px 0; font-size: 16px;">Vérifier mon gain final</h3>
+      <p style="opacity: 0.8; font-size: 12px;">Déposez votre tableau d'amortissement (Etude gratuite)</p>
+      <input type="file" id="f" style="display:none">
     </div>
   </div>
 
-  <div id="final">
-    <div class="banner">
-      <span style="text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: 2px;">Économie Totale Projetée</span>
-      <span class="total" id="total-sum">9 375 €</span>
-      <p style="font-weight: 700;" id="heads">Basé sur 1 tête à 100%</p>
-    </div>
-    <a href="#" id="wa" class="wa">📲 Confirmer ce gain sur WhatsApp</a>
-    <p style="margin-top: 25px; font-size: 11px; opacity: 0.6; text-align: center;">*Estimation basée sur un taux cible de 0,15% (Loi Lemoine).<br>Expertise Jérémy Dallinges — Toulouse & Occitanie.</p>
+  <div id="screen-final" class="main-card" style="background: var(--primary); color: white;">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; color: var(--accent);">Dossier éligible !</h2>
+    <p style="margin: 15px 0; opacity: 0.9;">Jérémy a bien reçu vos informations et prépare votre comparatif personnalisé.</p>
+    <a href="#" id="wa-link" class="wa-btn">📲 Finaliser sur WhatsApp</a>
   </div>
 </div>
 
 <div class="footer">
-  <div style="color: #F1C40F; font-weight: 800; font-size: 15px; margin-bottom: 10px;">⭐️ 4.8/5 (58 avis clients)</div>
-  <strong>Jérémy DALLINGES</strong> — Courtier Expert en Crédit & Assurance<br>
-  📍 Toulouse, France · ORIAS n° 23006269
+  <strong>Jérémy DALLINGES</strong> — Courtier Expert (ORIAS 23006269)<br>
+  📍 Toulouse, France • Spécialiste Loi Lemoine<br>
+  ⭐️ 4.8/5 (58 avis clients)
 </div>
 
 <script>
   let bCount = 1;
-  const iCap = document.getElementById('range-cap');
-  const iDur = document.getElementById('range-dur');
-  const iTaux = document.getElementById('range-taux');
+  const iCap = document.getElementById('i-cap');
+  const iDur = document.getElementById('i-dur');
+  const iTaux = document.getElementById('i-taux');
 
-  function changeB(n) {
+  function setB(n) {
     bCount = n;
-    document.getElementById('btn-1').classList.toggle('active', n === 1);
-    document.getElementById('btn-2').classList.toggle('active', n === 2);
-    document.getElementById('heads').innerText = `Basé sur ${n} tête(s) à 100%`;
-    calc();
+    document.getElementById('b1').classList.toggle('active', n===1);
+    document.getElementById('b2').classList.toggle('active', n===2);
+    update();
   }
 
-  function calc() {
+  function update() {
     const c = parseFloat(iCap.value);
     const d = parseInt(iDur.value);
     const t = parseFloat(iTaux.value);
 
-    document.getElementById('val-cap').innerText = c.toLocaleString('fr-FR') + ' €';
-    document.getElementById('val-dur').innerText = d + (d > 1 ? ' ans' : ' an');
-    document.getElementById('val-taux').innerText = t.toFixed(2) + '%';
+    document.getElementById('l-cap').innerText = c.toLocaleString('fr-FR') + ' €';
+    document.getElementById('l-dur').innerText = d + (d > 1 ? ' ans' : ' an');
+    document.getElementById('l-taux').innerText = t.toFixed(2) + '%';
 
     const mB = ((c * (t / 100)) / 12) * bCount;
     const mE = ((c * 0.0015) / 12) * bCount;
+    const gainMois = mB - mE;
 
-    document.getElementById('price-bank').innerText = Math.round(mB) + ' €';
-    document.getElementById('price-expert').innerText = Math.round(mE) + ' €';
+    document.getElementById('res-mensuel').innerText = Math.round(gainMois) + ' €';
+    
+    // Calcul 8 ans (ou moins si durée restante < 8)
+    const g8 = gainMois * 12 * Math.min(8, d);
+    document.getElementById('res-8ans').innerText = Math.round(g8).toLocaleString('fr-FR') + ' €';
 
-    const gain = (mB - mE) * 12 * d;
-    document.getElementById('total-sum').innerText = Math.round(gain).toLocaleString('fr-FR') + ' €';
+    // Total
+    const gT = gainMois * 12 * d;
+    document.getElementById('res-total').innerText = Math.round(gT).toLocaleString('fr-FR') + ' €';
   }
 
-  [iCap, iDur, iTaux].forEach(input => input.oninput = calc);
+  [iCap, iDur, iTaux].forEach(input => input.oninput = update);
 
-  document.getElementById('fin').onchange = function(e) {
+  document.getElementById('f').onchange = function(e) {
     if(e.target.files.length > 0) {
-      document.getElementById('main-ui').style.display = 'none';
-      document.getElementById('final').style.display = 'block';
-      const msg = encodeURIComponent(`Bonjour Jérémy ! 👋\nSimulation faite :\n• Emprunteur(s) : ${bCount}\n• Gain : ${document.getElementById('total-sum').innerText}\nJ'envoie mon tableau d'amortissement.`);
-      document.getElementById('wa').href = `https://wa.me/33609163435?text=${msg}`;
+      document.getElementById('ui-calc').style.display = 'none';
+      document.getElementById('screen-final').style.display = 'block';
+      const msg = encodeURIComponent(`Bonjour Jérémy ! 👋\n\nSimulation Loi Lemoine :\n• Gain Mensuel : ${document.getElementById('res-mensuel').innerText}\n• Gain sur 8 ans : ${document.getElementById('res-8ans').innerText}\n\nJ'ai transmis mon tableau d'amortissement.`);
+      document.getElementById('wa-link').href = `https://wa.me/33609163435?text=${msg}`;
     }
   };
 
-  calc();
+  update();
 </script>
 </body>
 </html>
