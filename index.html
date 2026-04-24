@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analyseur Assurance Emprunteur — Jeremy Dallinges</title>
+<title>Analyseur Assurance Emprunteur — Jérémy Dallinges</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -47,17 +47,18 @@
   .profile-container {
     margin-bottom: 20px;
   }
+  /* Photo agrandie selon souhait (+1cm environ) */
   .profile-img {
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     border: 3px solid var(--gold);
     object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
   .hero h1 { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(28px, 6vw, 42px); 
+    font-size: clamp(26px, 5vw, 38px); 
     margin-bottom: 15px; 
     line-height: 1.1;
   }
@@ -71,7 +72,7 @@
   }
 
   /* MAIN CARD */
-  .container { max-width: 600px; margin: -60px auto 50px; padding: 0 20px; }
+  .container { max-width: 650px; margin: -60px auto 50px; padding: 0 20px; }
   .card { 
     background: var(--white); 
     border-radius: 24px; 
@@ -79,28 +80,45 @@
     padding: 40px 30px; 
   }
 
-  /* DROPZONE */
+  /* CALCULATEUR INTERACTIF */
+  .calculator { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed var(--cream-dark); }
+  .calc-title { font-weight: 600; color: var(--navy); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; font-size: 18px; }
+  .slider-group { margin-bottom: 25px; }
+  .slider-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+  .slider-label span:last-child { color: var(--gold); font-weight: 700; font-size: 16px; }
+  input[type=range] { width: 100%; accent-color: var(--gold); cursor: pointer; height: 6px; border-radius: 5px; }
+
+  /* DROPZONE & FORM */
+  #form-area { animation: fadeIn 0.5s ease; }
   .dropzone { 
-    border: 2px dashed var(--cream-dark); 
+    border: 2px dashed var(--gold); 
     border-radius: 20px; 
-    padding: 50px 20px; 
+    padding: 40px 20px; 
     text-align: center; 
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: all 0.3s ease; 
     cursor: pointer; 
     background: var(--cream); 
   }
-  .dropzone:hover { 
-    border-color: var(--gold); 
-    background: var(--white);
-    transform: translateY(-2px);
-  }
-  .dropzone-icon { font-size: 48px; margin-bottom: 15px; display: block; }
-  .dropzone-text { font-weight: 600; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
-  .dropzone-sub { font-size: 14px; color: var(--text-muted); }
+  .dropzone:hover { border-color: var(--navy); background: var(--white); }
+  .dropzone-icon { font-size: 40px; margin-bottom: 10px; display: block; }
 
-  /* LOADING & RESULTS */
-  #loading { display: none; text-align: center; padding: 30px 0; }
-  .results { display: none; animation: fadeIn 0.6s ease forwards; }
+  /* RGPD */
+  .rgpd-box { 
+    margin: 20px 0; 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    display: flex; 
+    gap: 12px; 
+    align-items: flex-start; 
+    text-align: left;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .rgpd-box input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--navy); }
+
+  /* RESULTS */
+  .results { display: none; text-align: center; animation: fadeIn 0.6s ease forwards; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
   .result-box { 
@@ -109,120 +127,23 @@
     border-radius: 18px; 
     padding: 30px; 
     text-align: center; 
-    margin-bottom: 25px; 
+    margin-bottom: 20px; 
   }
   .result-box .label { font-size: 13px; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; font-weight: 600; }
-  .result-box .value { font-family: 'Playfair Display', serif; font-size: 40px; margin: 10px 0; }
+  .result-box .value { font-family: 'Playfair Display', serif; font-size: 44px; margin: 10px 0; color: var(--gold); }
 
   /* BUTTONS */
   .cta-btn { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 12px; 
-    width: 100%; 
-    padding: 20px; 
-    border-radius: 14px; 
-    font-weight: 600; 
-    font-size: 16px;
-    text-decoration: none; 
-    transition: 0.3s; 
-    border: none;
-    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 12px; 
+    width: 100%; padding: 20px; border-radius: 14px; font-weight: 600; 
+    font-size: 16px; text-decoration: none; border: none; cursor: pointer; transition: 0.3s;
   }
   .btn-whatsapp { background: #25D366; color: white; }
-  .cta-btn:hover { filter: brightness(1.1); transform: scale(1.02); }
+  .cta-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
   /* FOOTER */
   .footer { 
-    text-align: center; 
-    margin-top: 40px; 
-    padding-bottom: 40px;
-    font-size: 12px; 
-    color: var(--text-muted); 
-    line-height: 1.8;
+    text-align: center; margin-top: 40px; padding-bottom: 40px;
+    font-size: 12px; color: var(--text-muted); line-height: 1.8;
   }
-</style>
-</head>
-<body>
-
-<header class="brand-header">
-  <img src="NEW LOGO.png" alt="Pretto Galaxy Logo" class="main-logo">
-</header>
-
-<section class="hero">
-  <div class="profile-container">
-    <img src="Photo pro DALLINGES.jpeg" alt="Jeremy Dallinges" class="profile-img">
-  </div>
-  <h1>Économisez sur votre<br><span>Assurance de Prêt</span></h1>
-  <p>Loi Lemoine 2026 : Récupérez jusqu'à 15 000€ sur le coût total de votre crédit en changeant d'assurance.</p>
-</section>
-
-<div class="container">
-  <div class="card">
-    
-    <div class="dropzone" id="dropzone" onclick="document.getElementById('fileInput').click()">
-      <span class="dropzone-icon">📥</span>
-      <div class="dropzone-text">Déposez votre tableau d'amortissement</div>
-      <div class="dropzone-sub">Analyse gratuite et sécurisée en moins de 2h</div>
-      <input type="file" id="fileInput" style="display:none" onchange="handleFile(this.files)">
-    </div>
-
-    <div id="loading">
-      <div style="font-size: 40px; margin-bottom: 10px;">⚙️</div>
-      <p>Analyse de vos conditions bancaires...</p>
-    </div>
-
-    <div class="results" id="results">
-      <div class="result-box">
-        <div class="label">Gain moyen estimé</div>
-        <div class="value" id="gain-total">9 240 €</div>
-        <div class="label">sur la durée restante</div>
-      </div>
-      
-      <p style="margin-bottom: 25px; text-align: center; font-size: 15px;">
-        Bravo ! Votre dossier présente un fort potentiel d'économie. <br><strong>Jeremy</strong> vient de recevoir votre demande.
-      </p>
-
-      <a href="#" id="wa-btn" class="cta-btn btn-whatsapp">
-        <span>Affiner le calcul sur WhatsApp</span>
-      </a>
-    </div>
-
-    <div class="footer">
-      <strong>Jeremy Dallinges</strong> — Courtier Expert en Financement<br>
-      Toulouse & Occitanie · ORIAS n° 23006269<br>
-      © 2026 Analyseur Emprunteur Lemoine
-    </div>
-  </div>
-</div>
-
-<script>
-  function handleFile(files) {
-    if (files.length > 0) {
-      const fileName = files[0].name;
-      const dropzone = document.getElementById('dropzone');
-      const loading = document.getElementById('loading');
-      const results = document.getElementById('results');
-
-      dropzone.style.display = 'none';
-      loading.style.display = 'block';
-
-      setTimeout(() => {
-        loading.style.display = 'none';
-        results.style.display = 'block';
-        
-        const phoneNumber = "33609163435";
-        const message = encodeURIComponent(
-          `Bonjour Jeremy ! 👋\n\n` +
-          `Je viens de tester votre outil d'analyse d'assurance avec mon fichier : ${fileName}.\n` +
-          `J'aimerais savoir comment récupérer les économies sur mon crédit.`
-        );
-        document.getElementById('wa-btn').href = `https://wa.me/${phoneNumber}?text=${message}`;
-      }, 2500);
-    }
-  }
-</script>
-
-</body>
-</html>
+  .rating { color: #f1c
