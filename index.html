@@ -8,183 +8,148 @@
 <style>
   :root {
     --navy: #1A3C34;
-    --navy-mid: #245C4F;
     --gold: #3DB984;
-    --gold-light: #6DCFAA;
     --cream: #F4FAF7;
     --cream-dark: #E0F0E9;
+    --white: #FFFFFF;
     --text: #1A1A1A;
     --text-muted: #6B6B6B;
-    --white: #FFFFFF;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { 
-    font-family: 'DM Sans', sans-serif; 
-    background: var(--cream); 
-    color: var(--text); 
-    min-height: 100vh; 
-    line-height: 1.6;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; line-height: 1.6; }
 
-  /* HEADER & LOGO */
-  .brand-header {
-    padding: 20px;
+  /* LOGO MODERNISÉ */
+  .brand-nav {
+    padding: 25px 40px;
     display: flex;
-    justify-content: center;
-    background: var(--white);
-    border-bottom: 1px solid var(--cream-dark);
+    justify-content: flex-start; /* Aligné à gauche pour un look moderne */
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
   }
-  .main-logo { height: 45px; width: auto; }
+  .main-logo { height: 55px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
 
   /* HERO SECTION */
   .hero { 
     background: var(--navy); 
-    padding: 60px 24px 100px; 
+    padding: 120px 24px 100px; /* Plus de padding top pour laisser la place au logo */
     text-align: center; 
     color: var(--white);
   }
   .profile-container { margin-bottom: 25px; }
-  /* Photo agrandie : ~135px pour un impact visuel fort */
   .profile-img {
-    width: 135px;
-    height: 135px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     border: 4px solid var(--gold);
     object-fit: cover;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   }
-  .hero h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(26px, 5vw, 40px); 
-    margin-bottom: 10px; 
-    line-height: 1.2;
-  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 42px); margin-bottom: 10px; line-height: 1.2; }
   .hero h1 span { color: var(--gold); }
-  .hero p { font-size: 18px; opacity: 0.85; font-weight: 300; max-width: 600px; margin: 0 auto; }
+  .hero p { font-size: 18px; opacity: 0.9; font-weight: 300; max-width: 600px; margin: 0 auto; }
 
-  /* MAIN CONTAINER */
-  .container { max-width: 680px; margin: -60px auto 60px; padding: 0 20px; }
-  .card { 
-    background: var(--white); 
-    border-radius: 28px; 
-    box-shadow: 0 25px 50px rgba(26,60,52,0.12); 
-    padding: 40px; 
-  }
+  /* CONTAINER */
+  .container { max-width: 680px; margin: -60px auto 60px; padding: 0 20px; position: relative; z-index: 5; }
+  .card { background: var(--white); border-radius: 30px; box-shadow: 0 25px 60px rgba(26,60,52,0.15); padding: 45px; }
 
   /* CALCULATEUR */
-  .section-title { font-weight: 600; color: var(--navy); margin-bottom: 25px; font-size: 19px; display: flex; align-items: center; gap: 10px; }
-  .slider-group { margin-bottom: 25px; }
-  .slider-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; font-weight: 500; }
-  .slider-value { color: var(--gold); font-weight: 700; font-size: 16px; }
+  .section-title { font-weight: 600; color: var(--navy); margin-bottom: 30px; font-size: 20px; display: flex; align-items: center; gap: 12px; }
+  .slider-group { margin-bottom: 30px; }
+  .slider-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px; font-weight: 500; }
+  .slider-value { color: var(--gold); font-weight: 700; font-size: 18px; background: var(--cream); padding: 2px 10px; border-radius: 8px; }
   
   input[type=range] { 
-    width: 100%; height: 7px; background: var(--cream-dark); border-radius: 10px;
-    appearance: none; outline: none; accent-color: var(--gold);
+    width: 100%; height: 8px; background: var(--cream-dark); border-radius: 10px;
+    appearance: none; outline: none; accent-color: var(--gold); cursor: pointer;
   }
 
-  /* ETAPE DEPOT & RGPD */
-  #interaction-zone { margin-top: 30px; padding-top: 30px; border-top: 1px dashed var(--cream-dark); }
+  /* INTERACTION */
+  #interaction-zone { margin-top: 35px; padding-top: 35px; border-top: 1px dashed var(--cream-dark); }
   .dropzone { 
-    border: 2px dashed var(--gold); 
-    border-radius: 20px; 
-    padding: 40px; 
-    text-align: center; 
-    background: var(--cream); 
-    cursor: pointer;
-    transition: 0.3s;
+    border: 2px dashed var(--gold); border-radius: 20px; padding: 45px; 
+    text-align: center; background: var(--cream); cursor: pointer; transition: 0.3s;
   }
-  .dropzone:hover { background: var(--white); border-color: var(--navy); }
-  .dropzone-icon { font-size: 45px; display: block; margin-bottom: 10px; }
+  .dropzone:hover { background: var(--white); border-color: var(--navy); transform: scale(1.01); }
+  .dropzone-icon { font-size: 50px; display: block; margin-bottom: 12px; }
 
   .rgpd-consent { 
-    margin-top: 20px; 
-    font-size: 12px; 
-    color: var(--text-muted); 
-    display: flex; 
-    gap: 12px; 
-    align-items: flex-start;
-    background: #f8fcfb;
-    padding: 15px;
-    border-radius: 12px;
+    margin-top: 25px; font-size: 13px; color: var(--text-muted); display: flex; 
+    gap: 15px; align-items: flex-start; background: #f8fcfb; padding: 18px; border-radius: 15px;
   }
-  .rgpd-consent input { width: 20px; height: 20px; accent-color: var(--navy); cursor: pointer; }
+  .rgpd-consent input { width: 22px; height: 22px; accent-color: var(--navy); cursor: pointer; flex-shrink: 0; }
 
-  /* RESULTATS */
-  .results-display { display: none; text-align: center; animation: slideIn 0.5s ease-out; }
-  @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  /* RÉSULTATS */
+  .results-display { display: none; text-align: center; animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-  .gain-card { 
-    background: var(--navy); 
-    color: var(--white); 
-    border-radius: 20px; 
-    padding: 35px; 
-    margin-bottom: 25px; 
-  }
-  .gain-label { font-size: 13px; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; }
-  .gain-amount { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold); margin: 10px 0; display: block; }
+  .gain-card { background: var(--navy); color: var(--white); border-radius: 22px; padding: 40px; margin-bottom: 30px; }
+  .gain-label { font-size: 14px; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; }
+  .gain-amount { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--gold); margin: 12px 0; display: block; }
 
-  /* BUTTONS */
+  /* BOUTON */
   .btn-wa { 
     background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
-    gap: 12px; padding: 20px; border-radius: 15px; text-decoration: none; font-weight: 600; font-size: 17px;
-    transition: 0.3s;
+    gap: 12px; padding: 22px; border-radius: 18px; text-decoration: none; font-weight: 600; font-size: 18px;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); transition: 0.3s;
   }
-  .btn-wa:hover { transform: scale(1.02); filter: brightness(1.05); }
+  .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3); }
 
   /* FOOTER */
-  .footer { text-align: center; margin-top: 50px; font-size: 12px; color: var(--text-muted); line-height: 1.8; }
-  .stars { color: #F1C40F; font-size: 15px; margin-bottom: 5px; font-weight: bold; }
+  .footer { text-align: center; margin-top: 60px; font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+  .stars { color: #F1C40F; font-size: 16px; margin-bottom: 8px; font-weight: bold; }
 </style>
 </head>
 <body>
 
-<header class="brand-header">
-  <img src="NEW LOGO.png" alt="Logo" class="main-logo">
-</header>
+<nav class="brand-nav">
+  <img src="NEW LOGO.png" alt="Logo Agence by Pretto" class="main-logo">
+</nav>
 
 <section class="hero">
   <div class="profile-container">
     <img src="Photo pro DALLINGES.jpeg" alt="Jérémy Dallinges" class="profile-img">
   </div>
   <h1>Expert en Financement &<br><span>Assurance Emprunteur</span></h1>
-  <p>Loi Lemoine 2022 : Réduisez vos mensualités immédiatement grâce à une analyse personnalisée.</p>
+  <p>Loi Lemoine 2022 : Économisez sur votre crédit en changeant d'assurance gratuitement.</p>
 </section>
 
 <div class="container">
   <div class="card">
     
     <div class="calculator">
-      <div class="section-title">📈 Votre estimation d'économie</div>
+      <div class="section-title">📉 Estimez votre gain potentiel</div>
       
       <div class="slider-group">
         <div class="slider-header"><span>Capital restant dû</span> <span class="slider-value" id="val-cap">250 000 €</span></div>
-        <input type="range" id="input-cap" min="50000" max="1000000" step="10000" value="250000" oninput="runSim()">
+        <input type="range" id="input-cap" min="50000" max="1000000" step="10000" value="250000">
       </div>
 
       <div class="slider-group">
         <div class="slider-header"><span>Durée restante</span> <span class="slider-value" id="val-dur">15 ans</span></div>
-        <input type="range" id="input-dur" min="1" max="25" step="1" value="15" oninput="runSim()">
+        <input type="range" id="input-dur" min="1" max="25" step="1" value="15">
       </div>
 
       <div class="slider-group">
         <div class="slider-header"><span>Taux d'assurance actuel</span> <span class="slider-value" id="val-taux">0.40%</span></div>
-        <input type="range" id="input-taux" min="0.05" max="1.00" step="0.05" value="0.40" oninput="runSim()">
+        <input type="range" id="input-taux" min="0.05" max="1.00" step="0.05" value="0.40">
       </div>
     </div>
 
     <div id="interaction-zone">
       <div class="dropzone" onclick="document.getElementById('fileIn').click()">
-        <span class="dropzone-icon">📁</span>
-        <div style="font-weight:600; color:var(--navy);">Déposez votre tableau d'amortissement</div>
-        <div style="font-size:13px; color:var(--text-muted); margin-top:5px;">Pour une étude finale gratuite sous 2h</div>
-        <input type="file" id="fileIn" style="display:none" onchange="onFileUpload(this.files)">
+        <span class="dropzone-icon">📄</span>
+        <div style="font-weight:600; color:var(--navy); font-size: 18px;">Déposez votre tableau d'amortissement</div>
+        <div style="font-size:14px; color:var(--text-muted); margin-top:5px;">Analyse finale sécurisée sous 2h par Jérémy</div>
+        <input type="file" id="fileIn" style="display:none">
       </div>
 
       <div class="rgpd-consent">
         <input type="checkbox" id="rgpd-check">
         <label for="rgpd-check">
-          <strong>Consentement RGPD :</strong> En déposant mon document, j'accepte que Jérémy Dallinges utilise mes données pour réaliser cette étude. Aucune donnée n'est cédée à des tiers.
+          <strong>Consentement RGPD :</strong> En déposant mon document, j'accepte que Jérémy Dallinges traite mes données pour réaliser cette étude. Aucune donnée n'est cédée à des tiers.
         </label>
       </div>
     </div>
@@ -193,18 +158,100 @@
       <div class="gain-card">
         <div class="gain-label">Gain total estimé*</div>
         <div class="gain-amount" id="display-gain">9 375 €</div>
-        <div style="font-size:12px; opacity:0.8;">Économie sur la durée totale du prêt</div>
+        <div style="font-size:13px; opacity:0.8;">Économie sur la durée totale du prêt</div>
       </div>
       
       <a href="#" id="whatsapp-link" class="btn-wa">
         📲 Confirmer mon étude avec Jérémy
       </a>
 
-      <p style="font-size:10px; color:#999; margin-top:20px; line-height:1.4;">
-        *Calcul basé sur un taux cible prudent de 0,15% en délégation. <br>Le résultat final dépend de votre profil santé, âge et profession.
+      <p style="font-size:11px; color:#999; margin-top:25px; line-height:1.5; text-align: center;">
+        *Estimation basée sur un taux cible de 0,15%. <br>Le résultat final dépend de votre profil santé, âge, profession et habitudes de vie.
       </p>
     </div>
 
     <div class="footer">
-      <div class="stars">⭐️ 4.8/5 (58 avis clients)</div>
-      <strong>
+      <div class="stars">⭐️ 4.8/5 (58 avis clients vérifiés)</div>
+      <strong>Jérémy DALLINGES</strong> — Courtier Expert en Crédit & Assurance<br>
+      📍 Toulouse & Région Occitanie<br>
+      ORIAS n° 23006269 · Loi Lemoine 2022
+    </div>
+  </div>
+</div>
+
+<script>
+  // Elements
+  const capInput = document.getElementById('input-cap');
+  const durInput = document.getElementById('input-dur');
+  const tauxInput = document.getElementById('input-taux');
+  
+  const capLabel = document.getElementById('val-cap');
+  const durLabel = document.getElementById('val-dur');
+  const tauxLabel = document.getElementById('val-taux');
+  const gainDisplay = document.getElementById('display-gain');
+
+  const fileInput = document.getElementById('fileIn');
+  const rgpdCheck = document.getElementById('rgpd-check');
+  const interactionZone = document.getElementById('interaction-zone');
+  const resultsArea = document.getElementById('results-area');
+  const waLink = document.getElementById('whatsapp-link');
+
+  // Logic
+  function calculate() {
+    const cap = parseFloat(capInput.value);
+    const dur = parseInt(durInput.value);
+    const taux = parseFloat(tauxInput.value);
+
+    // Update labels
+    capLabel.innerText = cap.toLocaleString('fr-FR') + ' €';
+    durLabel.innerText = dur + (dur > 1 ? ' ans' : ' an');
+    tauxLabel.innerText = taux.toFixed(2) + '%';
+
+    // Algo: Gap avec 0.15% (Prudence profil)
+    const tauxCible = 0.15 / 100;
+    const tauxActuel = taux / 100;
+    const totalGain = (cap * (tauxActuel - tauxCible)) * dur;
+
+    gainDisplay.innerText = Math.round(totalGain).toLocaleString('fr-FR') + ' €';
+  }
+
+  // Listeners pour les curseurs
+  capInput.addEventListener('input', calculate);
+  durInput.addEventListener('input', calculate);
+  tauxInput.addEventListener('input', calculate);
+
+  // Upload & WhatsApp
+  fileInput.addEventListener('change', function(e) {
+    if (!rgpdCheck.checked) {
+      alert("Veuillez accepter les conditions RGPD avant d'envoyer votre document.");
+      this.value = ''; // Reset
+      return;
+    }
+
+    if (e.target.files.length > 0) {
+      const fileName = e.target.files[0].name;
+      interactionZone.style.display = 'none';
+      resultsArea.style.display = 'block';
+      
+      const currentCap = capLabel.innerText;
+      const currentGain = gainDisplay.innerText;
+      const phone = "33609163435";
+      
+      const text = encodeURIComponent(
+        `Bonjour Jérémy ! 👋\n\n` +
+        `J'ai simulé une économie d'assurance de prêt :\n` +
+        `• Capital : ${currentCap}\n` +
+        `• Économie estimée : ${currentGain}\n` +
+        `• Document déposé : ${fileName}\n\n` +
+        `J'aimerais valider cette étude avec vous.`
+      );
+      waLink.href = `https://wa.me/${phone}?text=${text}`;
+    }
+  });
+
+  // Init
+  calculate();
+</script>
+
+</body>
+</html>
